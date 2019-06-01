@@ -1,0 +1,7 @@
+# This will deny access to browse the files in this folder
+Options -Indexes
+# In addition, direct access to all php files in this 
+# folder (+ subfolder) is prevented
+<FilesMatch "\.php"> 
+    deny from all 
+</FilesMatch> 

@@ -1,0 +1,1 @@
+<option value="{$publisherID}">{$publisherName}</option>

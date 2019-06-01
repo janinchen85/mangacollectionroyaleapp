@@ -1,0 +1,37 @@
+# Activates the forwarding
+    RewriteEngine On
+# Specifies the directory where to start changing the URL.
+    RewriteBase /manga/public/
+# This conditions that must be true.
+# If the requested filename is not a directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+# If the requested filename is not a regular file that exists
+    RewriteCond %{REQUEST_FILENAME} !-f
+# If the requested filename is not a symbolic link
+    RewriteCond %{REQUEST_FILENAME} !-l
+# then rewrite the URL in the following way
+
+# ^(.+)$ means everything in the URL, which comes after the root
+# If the written URL in the browser is /index/home
+# index.php?url=$1 will be rewritten to index.php?url=home
+# which the internal server can understand and process
+# QSA -> if there is a query parameter passed with the original URL
+# it will be appended to rewrite => for Example: index.php?url=home&id=1
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+# Prevents direct access to the .htaccess file
+RewriteRule ^\.htaccess$ - [F]
+
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Max-Age "86400"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+Header always set Access-Control-Allow-Credentials: true
+# Added a rewrite to respond with a 200 SUCCESS on every OPTIONS request.
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+
+
+
+

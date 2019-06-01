@@ -1,0 +1,1 @@
+<option value="{$seriesID}" name="seriesID">{$seriesTitle}</option>

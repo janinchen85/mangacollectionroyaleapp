@@ -1,0 +1,149 @@
+html,
+body,
+div {
+    background-color: #323232;
+    color: #23ADB2;
+}
+
+h1,
+label,
+input {
+    margin: 20px;
+}
+
+label {
+    width: 20%;
+}
+
+
+
+.rows {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.label {
+    width: 40%;
+    float: left;
+    font-size: 25px;
+}
+
+.input {
+    width: 60%;
+    float: left;
+    margin-top: -22px;
+}
+
+.container {
+    width: 1980px;
+    margin-top: 15px;
+    background-color: #323232;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+.serieContainer,
+.volumeContainer {
+    height: auto;
+    width: 25%;
+    border: 1px solid #23ADB2;
+    border-radius: 30px;
+    background-color: #323232;
+    margin: auto;
+    float: left;
+    margin: 0 2%;
+}
+
+.others {
+    width: 20%;
+    float: left;
+    margin: 0 2%;
+}
+
+textarea {
+    margin-top: 15px;
+    width: 200px;
+    font-size: 16px;
+    margin-left: 20px;
+    border: 1px solid #23ADB2;
+    margin: 25px;
+    color: #23ADB2;
+}
+
+select,
+input,
+option,
+textarea {
+    background-color: #323232;
+    color: #23ADB2 !important;
+}
+
+select,
+input {
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    color: #23ADB2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    margin-left: 20px;
+    border: 1px solid #23ADB2;
+    margin-top: 25px;
+}
+
+select option {
+    color: #666;
+}
+
+select:focus::-ms-value {
+    background-color: transparent;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+
+
+
+.autorContainer button,
+.publisherContainer button {
+    width: 200px;
+    background-color: #23ADB2;
+    color: #323232;
+    font-size: 18px;
+    border-radius: 20px;
+    border: #323232;
+    margin: 0 15%;
+    padding: 3px;
+}
+
+.serieContainer button,
+.volumeContainer button {
+    width: 200px;
+    background-color: #23ADB2;
+    color: #323232;
+    font-size: 18px;
+    border-radius: 20px;
+    border: #323232;
+    margin: 1% 25%;
+    padding: 3px;
+}
+
+.error {
+    width: 100%;
+    height: 30px;
+    color: #CB1414;
+    text-align: center;
+    font-size: 25px;
+}
+
+.success {
+    width: 100%;
+    height: 30px;
+    color: #23ADB2;
+    text-align: center;
+    font-size: 25px;
+}
