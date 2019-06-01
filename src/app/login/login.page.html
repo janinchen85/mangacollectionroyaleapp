@@ -1,0 +1,22 @@
+<ion-header color="dark" no-padding>
+  <ion-toolbar color="dark" no-padding>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" class="login-content" padding>
+  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+    <ion-list class="login" no-lines color="dark">
+      <ion-item color="dark">
+        <ion-input color="primary" round type="text" placeholder="Benutzername" name="username" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
+      <ion-item color="dark">
+        <ion-input color="primary" type="password" placeholder="Passwort" name="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <div class="buttons" color="dark">
+        <ion-button shape="round" color="primary" fill="outline" (click)=login()>Sign In</ion-button>
+        <ion-button shape="round" color="primary" fill="outline" (click)=register()>Register</ion-button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

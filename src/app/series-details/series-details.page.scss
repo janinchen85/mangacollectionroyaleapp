@@ -1,0 +1,144 @@
+p {
+    font-size: 12px;
+    padding: 1px;
+    margin: 1px;
+    color: white;
+    margin-top: 15px;
+}
+
+.head {
+    background: url('/assets/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100px;
+}
+
+.titles {
+    font-size: 14px;
+    font-weight: 700;
+    color: #23ADB2;
+    margin-bottom: 20px;
+    margin-top: -5px;
+}
+
+.autor {
+    margin-top: -15px;
+
+}
+
+.publisher {
+    font-size: 12px;
+}
+
+img.icons {
+    height: 35px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+ion-badge {
+    padding: 5px !important;
+    margin: 5px !important;
+    font-size: 10px !important
+}
+
+ion-row.text {
+    font-size: 10px;
+}
+
+img.cover {
+    width: auto;
+    height: 100px !important;
+}
+
+img.not-owned {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0.5px solid black;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    /* For IE8 and earlier */
+}
+
+img.owned {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0.5px solid black;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    /* For IE8 and earlier */
+}
+
+ion-card details summary {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card {
+    background-color: #323232;
+    color: #23ADB2;
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    border: 0.5px solid #23ADB2;
+    height: 100px;
+}
+
+.cover {
+    height: 100px;
+}
+
+.info {
+    height: 20px;
+    background-color: #323232;
+    color: #23ADB2;
+    text-align: center;
+    font-size: 14;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.title {
+    background-color: rgba(0, 0, 0, 0.75);
+    font-size: 0.7em;
+    font-weight: 500;
+    color: #23ADB2;
+    padding: 4px;
+}
+
+.title p {
+    color: white;
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+
+.stars {
+    background-color: #323232;
+    border: 0.5px solid #23ADB2;
+    height: 30px;
+}
+
+.stars ion-img {
+    height: 15px !important;
+    width: 15px !important;
+    margin-left: 6px;
+    float: left;
+    margin-top: -5px;
+}
+
+.stats p {
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+.text {
+    font-size: 12px;
+    color: #23ADB2;
+    font-weight: 700;
+}

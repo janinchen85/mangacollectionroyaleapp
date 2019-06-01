@@ -1,0 +1,111 @@
+<ion-header color="dark" no-padding>
+  <ion-toolbar color="dark" no-padding>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col no-padding>
+          <ion-menu-button></ion-menu-button>
+          <ion-title no-padding text-center *ngFor="let series of seriesInfos" class="head">
+            <ion-grid>
+              <ion-row no-wrap>
+                <ion-col size="3" no-padding><img class="cover" no-padding src="{{series.Cover}}"></ion-col>
+                <ion-col size="9" text-left>
+                  <p class="titles">{{series.Title}}</p>
+                  <p class="autor">{{series.Autor}}</p>
+                  <p>Veröffentlich von <span class="titles">{{series.Publisher}} </span> <br>
+                    seit: {{series.Start}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid color="dark" *ngFor="let series of seriesInfos">
+      <ion-row no-padding>
+        <ion-col size="4" class="text">Veröffentlicht</ion-col>
+        <ion-col size="6" class="text">Status</ion-col>
+      </ion-row>
+      <ion-row no-padding>
+        <ion-col size="4">
+          <ion-badge color="primary">{{series.Volumes}} von {{series.VolumesAll}} Bände</ion-badge>
+        </ion-col>
+        <ion-col size="6">
+          <ion-badge color="primary" *ngIf="series.NextVol && series.Volumes != series.VolumesAll">Band
+            {{series.NextVol}} am {{series.NextDate}}</ion-badge>
+          <ion-badge color="primary" *ngIf="!series.NextVol && series.Volumes == series.VolumesAll && series.Canceled == 'no'">abgeschlossen
+            seit:
+            {{series.End}}</ion-badge>
+          <ion-badge color="secondary" *ngIf="series.Canceled == 'yes' ">abgebrochen</ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid color="dark">
+      <ion-row text-center *ngFor="let stats of serieStats">
+        <ion-col><img class="icons" src="../assets/icons/book-white.png">
+          <ion-badge color="primary">{{stats.Manga }}</ion-badge>
+        </ion-col>
+        <ion-col><img class="icons" src="../assets/icons/book-white.png">
+          <ion-badge color="primary">{{ stats.Missing }}</ion-badge>
+        </ion-col>
+        <ion-col><img class="icons" src="../assets/icons/study.png">
+          <ion-badge color="primary">{{ stats.Read }}</ion-badge>
+        </ion-col>
+        <ion-col><img class="icons" src="../assets/icons/agenda.png">
+          <ion-badge color="primary">{{ stats.Unread }}</ion-badge>
+        </ion-col>
+      </ion-row>
+      <ion-row text-center class="text">
+        <ion-col>Besitz</ion-col>
+        <ion-col>fehlt</ion-col>
+        <ion-col>gelesen</ion-col>
+        <ion-col>ungelesen</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+  <ion-grid *ngFor="let series of seriesInfos" wrap>
+    <ion-card color="dark" padding>
+      <details>
+        <summary>
+          Inhalt
+        </summary>
+        <p>{{series.Text}}</p>
+      </details>
+    </ion-card>
+  </ion-grid>
+  <ion-grid>
+    <ion-card color="dark" padding>
+      <ion-row wrap>
+        <ion-col size="3" *ngFor="let volume of seriesVolumes">
+          <ion-row class="card" no-padding>
+            <ion-col size="12" class="cover" no-padding>
+              <img class="{{volume.Besitz}}" no-padding src="{{volume.Cover}}">
+            </ion-col>
+          </ion-row>
+          <ion-row no-padding class="info">
+            <ion-col size="12" no-padding class="title">
+              {{ volume.Volume }}
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="dark" no-padding>
+  </ion-toolbar>
+</ion-footer>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="dark" ion-fab (click)="scanBooks()">
+    <ion-icon name="barcode">
+    </ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button color="dark" ion-fab (click)="home()">
+    <ion-icon name="home">
+    </ion-icon>
+  </ion-fab-button>
+</ion-fab>

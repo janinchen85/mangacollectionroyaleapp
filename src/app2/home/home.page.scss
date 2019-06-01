@@ -1,0 +1,15 @@
+.welcome {
+    color: white;
+    text-align: center;
+}
+
+.head {
+    background: url('/assets/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 150px;
+}
+
+.head>ion-row>ion-col>img {
+    margin-top: 10px;
+}

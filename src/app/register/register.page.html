@@ -1,0 +1,28 @@
+<ion-header color="dark" no-padding>
+  <ion-toolbar color="dark" no-padding>
+    <ion-back-button start></ion-back-button>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" class="login-content" padding>
+  <form #loginForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+    <ion-list class="register" no-lines color="dark">
+      <ion-item color="dark">
+        <ion-input color="primary" round type="text" placeholder="Benutzername" name="username" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
+      <ion-item color="dark">
+        <ion-input color="primary" type="email" placeholder="Email" name="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item color="dark">
+        <ion-input color="primary" type="password" placeholder="Passwort" name="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <ion-item color="dark">
+        <ion-input color="primary" type="password" placeholder="Passwort wiederholen" name="password2" [(ngModel)]="user.password2"></ion-input>
+      </ion-item>
+      <div class="buttons" color="dark">
+        <ion-button shape="round" color="primary" fill="outline" (click)=register()>Register</ion-button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

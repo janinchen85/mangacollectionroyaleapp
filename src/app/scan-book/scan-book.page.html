@@ -1,0 +1,93 @@
+<ion-header color="dark" no-padding>
+  <ion-toolbar color="dark" no-padding>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Buch scan </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen padding *ngFor="let serie of Series">
+  <ion-row text-center class="scanresult">
+    <ion-col size="12">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{serie.Title}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card *ngFor="let volume of Volumes" (click)="toggleClass(volume,volume.ISBN)" [ngClass]="{'inactive': volume.active,'active': volume.active}">
+        <ion-card-content no-padding>
+          <ion-row no-padding>
+            <ion-col size="3" no-padding><img class="{{volume.Besitz}}" no-padding src="{{volume.Cover}}"></ion-col>
+            <ion-col size="9" class="volumeTitle">{{volume.Title}}</ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-row>
+        <ion-col size="4">
+          <button class="add" (click)="addSeries()">Hinzufügen</button>
+        </ion-col>
+        <ion-col size="4">
+          <button class="del" (click)="delSeries()">Entfernen</button>
+        </ion-col>
+        <ion-col size="4">
+          <button class="close" (click)="close()">Schliessen</button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-content [hidden]="unhidden">
+  <ion-row text-center class="scanresult">
+    <ion-col class="infos">
+      <ion-card class="infoTitle">
+        <ion-card-content class="title" no-padding>{{Volume}}</ion-card-content>
+      </ion-card>
+      <ion-card class="infoBesitz" *ngIf="Besitz == 'Ja'">
+        <ion-card-content class="besitz" no-padding>Du besitzt diesen Band bereits!</ion-card-content>
+      </ion-card>
+      <ion-card class="infoBesitz" *ngIf="Besitz == 'Nein'">
+        <ion-card-content class="fehlt" no-padding>Dieser Band fehlt dir!</ion-card-content>
+      </ion-card>
+      <ion-card class="infoStatus" *ngIf="Status == 'gelesen'">
+        <ion-card-content class="gelesen" no-padding>{{Status}}</ion-card-content>
+      </ion-card>
+      <ion-card class="infoStatus" *ngIf="Status == 'ungelesen'">
+        <ion-card-content class="ungelesen" no-padding>{{Status}}</ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer align-content-center>
+  <ion-grid no-padding class="scanresult">
+    <ion-row align-items-center no-padding color="dark">
+      <ion-col no-padding size="1"></ion-col>
+      <ion-col no-padding size="2">
+        <button no-padding class="infos" (click)="scanBook()">
+          <img src="../assets/icons/book_info.png" alt="Buch hInformation" />
+        </button>
+      </ion-col>
+      <ion-col no-padding size="2">
+        <button no-padding class="infos" (click)="bookRead()">
+          <img src="../assets/icons/book_read.png" alt="Buch gelesen" />
+        </button>
+      </ion-col>
+      <ion-col no-padding size="2">
+        <button no-padding class="infos" (click)="addBook()">
+          <img src="../assets/icons/book_add.png" alt="Buch hinzufügen" />
+        </button>
+      </ion-col>
+      <ion-col no-padding size="2">
+        <button no-padding class="infos" (click)="delBook()">
+          <img src="../assets/icons/book_del.png" alt="Buch hinzufügen" />
+        </button>
+      </ion-col>
+      <ion-col no-padding size="2">
+        <button no-paddin class="infos" g (click)="Serie()">
+          <img src="../assets/icons/series_add.png" alt="Serie hinzufügen / entfernen" />
+        </button>
+      </ion-col>
+      <ion-col no-padding size="1"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,16 +1,83 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
+<ion-header color="dark" no-padding>
+  <ion-toolbar color="dark" no-padding>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col no-padding>
+          <ion-menu-button></ion-menu-button>
+          <ion-title text-center *ngFor="let info of user" class="head">
+            Willkommen {{ info.Name }}
+          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid color="dark">
+      <ion-row text-center *ngFor="let stat of stats">
+        <ion-col><img class="icons" src="../assets/icons/bookshelf.png">
+          <ion-badge color="primary">{{ stat.Serien }}</ion-badge>
+        </ion-col>
+        <ion-col><img class="icons" src="../assets/icons/book-white.png">
+          <ion-badge color="primary">{{ stat.Manga }}</ion-badge>
+        </ion-col>
+        <ion-col><img class="icons" src="../assets/icons/study.png">
+          <ion-badge color="primary">{{ stat.Gelesen }}</ion-badge>
+        </ion-col>
+        <ion-col><img class="icons" src="../assets/icons/agenda.png">
+          <ion-badge color="primary">{{ stat.Ungelesen }}</ion-badge>
+        </ion-col>
+      </ion-row>
+      <ion-row text-center class="text">
+        <ion-col>Serien</ion-col>
+        <ion-col>Manga</ion-col>
+        <ion-col>gelesen</ion-col>
+        <ion-col>ungelesen</ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the
-    <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content no-padding>
+  <ion-grid>
+    <ion-row wrap>
+      <ion-card *ngIf="series == ''" text-center color="dark">
+        <ion-card-header color="primary" no-padding>
+          <h3 no-padding>Noch keine Manga vorhanden.</h3>
+        </ion-card-header>
+        <ion-card-content>Benutze die Scanfunktion um Deine Manga zur Datenbank hinzuzufügen.</ion-card-content>
+      </ion-card>
+      <ion-col size="4" *ngFor="let serie of series">
+        <ion-row class="card" no-padding (click)="details(serie.SeriesID)">
+          <ion-col size="12" class="cover" no-padding>
+            <img no-padding src="{{serie.Cover}}">
+          </ion-col>
+        </ion-row>
+        <ion-row no-padding class="info">
+          <ion-col size="12" no-padding class="title">
+            {{ serie.SeriesSh }}<br>
+            <p>{{ serie.Autor }}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="stars" no-wrap>
+            <span class="white">Bände:</span> {{serie.VolumeCount}} / {{serie.VolumesAll}}
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar color="dark" no-padding>
+  </ion-toolbar>
+</ion-footer>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="dark" ion-fab (click)="scanBooks()">
+    <ion-icon name="barcode">
+    </ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button color="dark" ion-fab (click)="home()">
+    <ion-icon name="home">
+    </ion-icon>
+  </ion-fab-button>
+</ion-fab>
